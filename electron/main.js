@@ -1,4 +1,4 @@
-const {app,BrowserWindow} = require("electron");
+const {app,BrowserWindow,ipcMain} = require("electron");
 const path = require("path");
 const NODE_ENV = process.env.NODE_ENV;
 class AppWindow extends BrowserWindow{
@@ -8,7 +8,8 @@ class AppWindow extends BrowserWindow{
       height:600,
       webPreferences:{
         nodeIntegration:true,
-        contextIsolation: false
+        contextIsolation: false,
+        webSecurity:false, // 允许跨域
       }
     }
     const finalConfig = {...basicConfig,...config}
@@ -33,4 +34,7 @@ app.on("ready",()=>{
     autoHideMenuBar : true,
     titleBarStyle:"hidden",
   })
+})
+ipcMain.on("xxx",(event,arg)=>{
+  console.log(arg)
 })
