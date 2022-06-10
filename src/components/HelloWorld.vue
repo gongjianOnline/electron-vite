@@ -4,9 +4,6 @@
 
 <script setup>
 import { ref } from 'vue';
-const {ipcRenderer} = require("electron")
-
-ipcRenderer.send("xxx","this is xxx")
 
 defineProps({
   msg: String

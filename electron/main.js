@@ -19,6 +19,7 @@ class AppWindow extends BrowserWindow{
       "http://localhost:3000":
       `file://${path.join(__dirname,"../dist/index.html")}`
     )
+    // 打开开发控制台
     if(NODE_ENV === "development"){
       this.webContents.openDevTools();
     }
@@ -34,7 +35,4 @@ app.on("ready",()=>{
     autoHideMenuBar : true,
     titleBarStyle:"hidden",
   })
-})
-ipcMain.on("xxx",(event,arg)=>{
-  console.log(arg)
 })
